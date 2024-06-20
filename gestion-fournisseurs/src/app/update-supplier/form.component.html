@@ -1,0 +1,15 @@
+<form [formGroup]="formSupplier">
+    <div class="row">
+        <div class="col">
+            <input formControlName="nom" type="text" class="form-control" placeholder="Nom" />
+        </div>
+        <div class="col">
+            <input formControlName="prenom" type="text" class="form-control" placeholder="Prenom" />
+        </div>
+        <div class="col">
+            <button (click)="updateSupplier()" [disabled]="!formSupplier.valid" type="button" class="btn btn-primary">
+                Mettre à jour
+            </button>
+        </div>
+    </div>
+</form>

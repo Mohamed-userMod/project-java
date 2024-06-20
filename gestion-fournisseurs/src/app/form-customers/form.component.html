@@ -1,0 +1,14 @@
+<form [formGroup]="formCustomer">
+    <div class="row">
+        <div class="col">
+            <input formControlName="nom" type="text" class="form-control" placeholder="Nom">
+        </div>
+        <div class="col">
+            <input formControlName="prenom" type="text" class="form-control" placeholder="Prenom">
+        </div>
+
+        <button (click)="addClient()" [disabled]="!formCustomer.valid" type="button" class="btn btn-primary">Ajouter
+        </button>
+    </div>
+
+</form>

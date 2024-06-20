@@ -1,0 +1,19 @@
+<form [formGroup]="formOrder">
+
+    <div class="row mt-3">
+        <div class="col">
+            <label for="customer_id">Client</label>
+            <select formControlName="customer_id" class="form-control">
+                <option *ngFor="let client of clients" [value]="client.id">{{ client.nom }} {{ client.prenom }}</option>
+            </select>
+        </div>
+        <div class="col">
+            <label for="Date"></label>
+            <input formControlName="date" type="date" class="form-control">
+        </div>
+        <div class="col">
+            <button (click)="addOrder()" [disabled]="!formOrder.valid" type="button"
+                class="btn btn-primary">Ajouter</button>
+        </div>
+    </div>
+</form>

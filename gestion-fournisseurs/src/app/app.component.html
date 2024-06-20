@@ -1,0 +1,12 @@
+<h1>Gestion des fournisseurs</h1>
+<nav>
+  <a [routerLink]="['/fournisseurs']">
+    <button style="padding: 15px;">Aller vers Gestion des
+      fournisseurs</button>
+  </a>
+  <button style="padding: 15px;" [routerLink]="['/products']">Aller vers Gestion des produits</button>
+  <button style="padding: 15px;" [routerLink]="['/manage']">Aller vers Gestion globale (Commandes, Clients, Lignes de
+    commandes)</button>
+</nav>
+<router-outlet>
+  <router-outlet />

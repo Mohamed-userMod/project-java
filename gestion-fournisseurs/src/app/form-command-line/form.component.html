@@ -1,0 +1,27 @@
+<form [formGroup]="formCommandLine">
+    <div class="form-group">
+        <small style="color: red;">Etant donné qu'il n'y a pas de relation directe entre ligne de commande et client, on
+            est obligé de
+            passer par une commande passée par un client pour acceder à celui ci.</small>
+        <br><br>
+        <label for="">Commandes (<small>Commande effectuée par un client</small>)</label>
+        <select formControlName="order_id" class="form-control">
+            <option *ngFor="let order of orders" [value]="order.id">{{ order.customer.nom }} - {{ order.date }}</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="product_id">Produits</label>
+        <select formControlName="product_id" class="form-control">
+            <option *ngFor="let product of products" [value]="product.id">{{ product.nom }}</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input formControlName="quantity" type="number" class="form-control" placeholder="Enter quantity">
+    </div>
+    <br><br>
+    <button (click)="addCommandLine()" [disabled]="!formCommandLine.valid" type="button" class="btn btn-primary">Ajouter
+    </button>
+</form>

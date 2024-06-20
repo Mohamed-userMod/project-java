@@ -1,0 +1,119 @@
+<div class="container">
+    <h1>Gestion Globale (Clients, Commandes, Lignes de commande)</h1>
+
+    <br />
+    <br />
+
+    <div class="mb-3">
+        <button type="button" class="btn btn-primary mr-2" (click)="openOrdersModal()">Ajouter commande</button>
+        <!-- <br /><br /> -->
+
+        <button style="margin: 0 15px;" type="button" class="btn btn-primary mr-2"
+            (click)="openCommandLineModal()">Ajouter ligne de
+            commande</button>
+        <!-- <br /><br /> -->
+
+        <button type="button" class="btn btn-primary" (click)="openClientsModal()">Ajouter client</button>
+    </div>
+
+    <br>
+    <small style="color: red;">Veuillez scroller pour voir les autres fonctionnalités</small>
+
+    <br />
+
+    <div>
+        <h2>Liste des commandes</h2>
+        <div *ngIf="commandes.length === 0" class="alert alert-info" role="alert">
+            Aucune commande trouvée.
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Nom du client</th>
+                    <th>Prenom du client</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let commande of commandes">
+                    <td>{{ commande.id }}</td>
+                    <td>{{ commande.date }}</td>
+                    <td>{{ commande.customer.nom }}</td>
+                    <td>{{ commande.customer.prenom }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div>
+        <h2>Liste des lignes de commandes</h2>
+        <div *ngIf="lignesCommande.length === 0" class="alert alert-info" role="alert">
+            Aucune ligne de commande trouvée.
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date de la commande</th>
+                    <th>Nom du client</th>
+                    <th>Nom du produit</th>
+                    <th>Prix du produit</th>
+                    <th>Quantite</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ligneCommande of lignesCommande">
+                    <td>{{ ligneCommande.idCommandLine }}</td>
+                    <td>{{ ligneCommande.order.date }}</td>
+                    <td>{{ ligneCommande.order.customer.nom }}</td>
+                    <td>{{ ligneCommande.product.nom}}</td>
+                    <td>{{ ligneCommande.product.prix}}</td>
+                    <td>{{ ligneCommande.quantity }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div>
+        <h2>Liste des clients</h2>
+        <small style="color: red;">Appuyez sur entrer pour confirmer votre recherche
+        </small>
+        <div class="input-group mb-3">
+
+            <input style="max-width: 70%;" type="text" class="form-control" placeholder="Rechercher un client par nom"
+                #searchInput (keyup.enter)="onSearch(searchInput.value)">
+        </div>
+        <div *ngIf="clients.length === 0" class="alert alert-info" role="alert">
+            Aucun client trouvé.
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of clients">
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.prenom }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

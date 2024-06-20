@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Gestion des produits</h1>
+
+    <button (click)="openModal()" type="button" class="btn btn-primary mb-3">Ajouter Produit</button>
+
+    <div *ngIf="products.length === 0" class="alert alert-info" role="alert">
+        Aucun produit trouvé.
+    </div>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Nom du fournisseur</th>
+                <th>Prénom du fournisseur</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produit of products">
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.quantite }}</td>
+                <td>{{ produit.supplier.nom }}</td>
+                <td>{{ produit.supplier.prenom }}</td>
+                <td>
+                    <button type="button" class="btn btn-secondary" (click)="openUpdateModal(produit)" s>
+                        Modifier
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="deleteProduct(produit.id)">
+                        Supprimer
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

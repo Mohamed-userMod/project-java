@@ -1,0 +1,76 @@
+<div class="container">
+    <h1>Gestion des fournisseurs</h1>
+
+    <!-- <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#ajoutFournisseurModal">
+        Ajouter Fournisseur
+    </button> -->
+
+    <button (click)="openModal()" type="button" class="btn btn-primary">Afficher le formulaire</button>
+    <br><br>
+    <!-- <small>Le bouton supprimer ne marchera pas si un produit est associé à l'id de ce fournisseur. Mais
+        sinon la fonctionnalité de suppression marche et pour le tester, veuillez désactiver le foreign
+        key check avec <br> <code>SET FOREIGN_KEY_CHECKS=0;</code></small>
+    <br><br> -->
+
+    <div *ngIf="fournisseurs.length === 0" class="alert alert-info" role="alert">
+        Aucun fournisseur trouvé.
+    </div>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let fournisseur of fournisseurs">
+                <td>{{ fournisseur.nom }}</td>
+                <td>{{ fournisseur.prenom }}</td>
+                <td>
+                    <button type="button" class="btn btn-secondary" (click)="openUpdateModal(fournisseur)">
+                        Modifier
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="deleteFournisseur(fournisseur.id)">
+                        Supprimer
+                    </button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <div class="modal fade" id="ajoutFournisseurModal" tabindex="-1" role="dialog"
+    aria-labelledby="ajoutFournisseurModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajoutFournisseurModalLabel">Ajouter un fournisseur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form (submit)="addFournisseur()">
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="nouveauFournisseur.nom"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" class="form-control" id="prenom" name="prenom"
+                            [(ngModel)]="nouveauFournisseur.prenom" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div> -->

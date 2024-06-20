@@ -1,0 +1,33 @@
+<form [formGroup]="formProduct">
+    <div class="row">
+        <div class="col">
+            <label for="">Nom</label>
+
+            <input formControlName="nom" type="text" class="form-control" placeholder="Nom" />
+        </div>
+        <div class="col">
+            <label for="">Prix</label>
+
+            <input formControlName="prix" type="number" class="form-control" placeholder="Prix" />
+        </div>
+        <div class="col">
+            <label for="">Quantite</label>
+            <input formControlName="quantite" type="number" class="form-control" placeholder="Quantité" />
+        </div>
+        <div class="col">
+            <label for="">Fournisseurs</label>
+
+            <select formControlName="supplier_id" class="form-control" [value]="product.supplier.id">
+                <option *ngFor="let supplier of suppliers" [ngValue]="supplier.id" [value]="supplier.id"
+                    [selected]="supplier.id === product.supplier.id">
+                    {{ supplier.nom }} {{ supplier.prenom }}
+                </option>
+            </select>
+        </div>
+        <div class="col">
+            <button (click)="updateProduct()" [disabled]="!formProduct.valid" type="button" class="btn btn-primary">
+                Mettre à jour
+            </button>
+        </div>
+    </div>
+</form>
